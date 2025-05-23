@@ -13,13 +13,13 @@ public class Alpaca {
 	private static final String API_SECRET = "RRYTWf9JZtXe55B5RKSLuoJkQ1TC3joPUGfRZYMN";
 	private static final String BASE_URL = "https://paper-api.alpaca.markets";
 
-	public void cnosultaMercados() {
+//	public void cnosultaMercados() {
+	public static void main(String[] args) {
 
-		String symbol = "AAPL"; 
+		String symbol = "AAPL";
 		OkHttpClient client = new OkHttpClient();
 
-		Request request = new Request.Builder().url(BASE_URL + "/v2/stocks/" + symbol + "/trades/latest")
-				.addHeader("APCA-API-KEY-ID", API_KEY).addHeader("APCA-API-SECRET-KEY", API_SECRET).build();
+		Request request = new Request.Builder().url("https://data.alpaca.markets/v2/stocks/" + symbol + "/trades/latest").addHeader("APCA-API-KEY-ID", API_KEY).addHeader("APCA-API-SECRET-KEY", API_SECRET).build();
 
 		try (Response response = client.newCall(request).execute()) {
 			if (response.isSuccessful() && response.body() != null) {
@@ -32,6 +32,7 @@ public class Alpaca {
 			e.printStackTrace();
 		}
 	}
+//	}
 
 	public void perfil() {
 		try {
