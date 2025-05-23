@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/orden")
-@CrossOrigin(origins = "http://localhost:8080")
+@RequestMapping("/api/orders")
+@CrossOrigin(origins = "http://localhost:3000")
 public class OrdenController {
 
     private final OrdenService ordenService;
@@ -18,10 +18,10 @@ public class OrdenController {
         this.ordenService = ordenService;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<String> crearOrden(@RequestBody Orden orden) {
-        //return ordenService.crearOrden(orden);
-    	System.out.println("todo en orden");
+    	System.out.println("todo en orden");    	
+        ordenService.crearOrden(orden);
     	return new ResponseEntity<String>("Listo", HttpStatus.OK);
     }
     

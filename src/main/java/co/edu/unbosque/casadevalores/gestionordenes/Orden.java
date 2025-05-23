@@ -3,114 +3,77 @@ package co.edu.unbosque.casadevalores.gestionordenes;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ordenes")
+@Table(name = "orders")
 public class Orden {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_orden")
-	private Long idOrden;
+	@Column(name = "idorden")
+	private Long idorden;
 
-	@Column(name = "tipo_orden", nullable = false, length = 50)
-	private String tipoOrden;
+	@Column(name = "tipoorden", nullable = false, length = 50)
+	private String tipoorden;
 
 	@Column(name = "estado", nullable = false, length = 50)
 	private String estado;
 
-	@Column(name = "cantidad_acciones", nullable = false)
-	private int cantidadAcciones;
+	@Column(name = "cantidadacciones", nullable = false)
+	private int cantidadacciones;
 
-	@Column(name = "valor_accion", nullable = false)
-	private Double valorAccion;
+	@Column(name = "valoraccion", nullable = false)
+	private Double valoraccion;
 
 	public Orden() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param idOrden
-	 * @param tipoOrden
-	 * @param estado
-	 * @param cantidadAcciones
-	 * @param valorAccion
-	 */
-	public Orden(Long idOrden, String tipoOrden, String estado, int cantidadAcciones, Double valorAccion) {
+	public Orden(Long id_orden, String tipoorden, String estado, int cantidadacciones, Double valoraccion) {
 		super();
-		this.idOrden = idOrden;
-		this.tipoOrden = tipoOrden;
+		this.idorden = id_orden;
+		this.tipoorden = tipoorden;
 		this.estado = estado;
-		this.cantidadAcciones = cantidadAcciones;
-		this.valorAccion = valorAccion;
+		this.cantidadacciones = cantidadacciones;
+		this.valoraccion = valoraccion;
 	}
 
-	/**
-	 * @return the idOrden
-	 */
-	public Long getIdOrden() {
-		return idOrden;
+	public Long getId_orden() {
+		return idorden;
 	}
 
-	/**
-	 * @param idOrden the idOrden to set
-	 */
-	public void setIdOrden(Long idOrden) {
-		this.idOrden = idOrden;
+	public void setId_orden(Long id_orden) {
+		this.idorden = id_orden;
 	}
 
-	/**
-	 * @return the tipoOrden
-	 */
-	public String getTipoOrden() {
-		return tipoOrden;
+	public String getTipoorden() {
+		return tipoorden;
 	}
 
-	/**
-	 * @param tipoOrden the tipoOrden to set
-	 */
-	public void setTipoOrden(String tipoOrden) {
-		this.tipoOrden = tipoOrden;
+	public void setTipoorden(String tipoorden) {
+		this.tipoorden = tipoorden;
 	}
 
-	/**
-	 * @return the estado
-	 */
 	public String getEstado() {
 		return estado;
 	}
 
-	/**
-	 * @param estado the estado to set
-	 */
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
-	/**
-	 * @return the cantidadAcciones
-	 */
-	public int getCantidadAcciones() {
-		return cantidadAcciones;
+	public int getCantidadacciones() {
+		return cantidadacciones;
 	}
 
-	/**
-	 * @param cantidadAcciones the cantidadAcciones to set
-	 */
-	public void setCantidadAcciones(int cantidadAcciones) {
-		this.cantidadAcciones = cantidadAcciones;
+	public void setCantidadacciones(int cantidadacciones) {
+		this.cantidadacciones = cantidadacciones;
 	}
 
-	/**
-	 * @return the valorAccion
-	 */
-	public Double getValorAccion() {
-		return valorAccion;
+	public Double getValoraccion() {
+		return valoraccion;
 	}
 
-	/**
-	 * @param valorAccion the valorAccion to set
-	 */
-	public void setValorAccion(Double valorAccion) {
-		this.valorAccion = valorAccion;
+	public void setValoraccion(Double valoraccion) {
+		this.valoraccion = valoraccion;
 	}
 
 }

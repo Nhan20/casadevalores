@@ -10,39 +10,50 @@ public class Inversionista {
 	@Column(name = "nickname")
 	private String nickname;
 
-	@Column(name = "password", nullable = false, length = 50)
+	@Column(name = "password", length = 50)
 	private String password;
 
-	@Column(name = "name", nullable = false, length = 50)
+	@Column(name = "name", length = 50)
 	private String name;
+	
+	@Column(name = "comisionista", length = 50)
+	private String comisionista;
 
-	@Column(name = "subscription", nullable = false, length = 50)
+	@Column(name = "subscription", length = 50)
 	private String subscription;
 
-	@Column(name = "id_portafolio", nullable = false, length = 50)
+	@Column(name = "id_portafolio", length = 50)
 	private int id_portafolio;
 
-	@Column(name = "correo", nullable = false, length = 50)
-	private int correo;
+	@Column(name = "correo", length = 50)
+	private String correo;
 
 	public Inversionista() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param nickname
-	 * @param password
-	 * @param name
-	 * @param subscription
-	 * @param id_portafolio
-	 */
-	public Inversionista(String nickname, String password, String name, String subscription, int id_portafolio) {
+	
+	
+	public Inversionista(String nickname, String password, String name, String comisionista, String correo) {
+		super();
+		this.nickname = nickname;
+		this.password = password;
+		this.name = name;
+		this.comisionista = comisionista;
+		this.correo = correo;
+	}
+
+
+
+	public Inversionista(String nickname, String password, String name, String subscription, int id_portafolio,
+			String correo) {
 		super();
 		this.nickname = nickname;
 		this.password = password;
 		this.name = name;
 		this.subscription = subscription;
 		this.id_portafolio = id_portafolio;
+		this.correo = correo;
 	}
 
 	/**
@@ -125,17 +136,11 @@ public class Inversionista {
 		this.id_portafolio = id_portafolio;
 	}
 
-	/**
-	 * @return the correo
-	 */
-	public int getCorreo() {
+	public String getCorreo() {
 		return correo;
 	}
 
-	/**
-	 * @param correo the correo to set
-	 */
-	public void setCorreo(int correo) {
+	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
 

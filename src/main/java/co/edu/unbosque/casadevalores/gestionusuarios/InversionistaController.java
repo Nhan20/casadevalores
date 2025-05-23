@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/inversionista")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:3000")
 public class InversionistaController {
 
     @Autowired
@@ -18,6 +18,7 @@ public class InversionistaController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody Inversionista loginRequest) {
+    	System.out.println(loginRequest.getPassword());
         Optional<Inversionista> inversionistaOpt = invServ.getInversionistaByNickname(loginRequest.getNickname());
 
         if (inversionistaOpt.isPresent()) {
@@ -31,22 +32,20 @@ public class InversionistaController {
             return ResponseEntity.status(404).body("Usuario no encontrado");
         }
     }
-
     
+    @GetMapping("/perfil")
+    public ResponseEntity<Inversionista> getPerfil(@RequestParam String nickname) {
+    	Optional<Inversionista> inversionista = invServ.getInversionistaByNickname(nickname);
+        if (inversionista == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Inversionista dto = new Inversionista();
+        dto.setName(inversionista.get().getName());
+        dto.setCorreo(inversionista.get().getCorreo());
+        dto.setNickname(inversionista.get().getNickname());
+        return ResponseEntity.ok(dto);
+    }
     
-    // Obtener todos los inversionistas
-    @GetMapping("/get")
-    public List<Inversionista> getAll() {
-        return invServ.getAllInversionistas();
-    }
-
-    // Obtener un inversionista por nickname
-    @GetMapping("/getById/{nickname}")
-    public ResponseEntity<Inversionista> getById(@PathVariable String nickname) {
-        Optional<Inversionista> inversionista = invServ.getInversionistaByNickname(nickname);
-        return inversionista.map(ResponseEntity::ok)
-                            .orElse(ResponseEntity.notFound().build());
-    }
 
     // Crear un nuevo inversionista
     @PostMapping("/create")
